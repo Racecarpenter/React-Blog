@@ -14,17 +14,18 @@ const addComment = (comment) => {
   }
 }
 
-const getAuthors = () => {
-  return {
-    type: 'FETCH_AUTHORS',
-    paylod: axios(`https://jsonplaceholder.typicode.com/users`)
-  }
-}
 
 const getPosts = () => {
   return {
     type: 'FETCH_POSTS',
     payload: axios(`https://jsonplaceholder.typicode.com/comments`)
+  }
+}
+
+const getAuthors = () => {
+  return {
+    type: 'FETCH_AUTHORS',
+    paylod: axios(`https://jsonplaceholder.typicode.com/users`)
   }
 }
 

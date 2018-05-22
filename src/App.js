@@ -26,8 +26,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-          <button onClick={(e) => this.returnHome(e)} class="btn btn-primary">DAUNTLESS</button>
+        <nav className="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+          <button onClick={(e) => this.returnHome(e)}>DAUNTLESS</button>
         </nav>
         <Switch>
           <Route exact path="/" component={Home}/>
