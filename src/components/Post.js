@@ -14,8 +14,9 @@ const Post = (props) => {
     return (
       <div style={postStyle}>
           <div className="card border-light mb-3">
-            <Link className="card-header" to={`/post/${props.post.id}`}>
               <img style={{height: 50, width: 50, resizeMode: 'contain'}} src={require('../person-icon.png')}/>
+            <Link to={{pathname:`/post/${props.post.id}`, post: {...props.post}, comments: {...props.comments}}}>
+            (Click to Preview)
             </Link>
               <div className="card-body">
                 <h4 className="card-title">{props.post.name.length > 15 ? `${shortTitle}...` : props.post.name}</h4>

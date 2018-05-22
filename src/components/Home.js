@@ -24,13 +24,14 @@ class Home extends Component {
     }
     let listStyle = {
       height: '65%',
-      overflowY: 'auto'
+      overflowY: 'auto',
+      marginTop: '10px'
     }
 
     return(
       <div>
         <div style={homeStyle}>
-          <Link to="/post/new">New Post</Link>
+          <Link to="/post/new" style={{marginLeft: '46%'}}><button>New Post</button></Link>
           <div style={listStyle}>
           {this.postList()}
           </div>

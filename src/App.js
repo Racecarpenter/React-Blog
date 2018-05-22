@@ -27,7 +27,6 @@ class App extends Component {
     return (
       <div className="App">
         <nav className="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-
           <button onClick={(e) => this.returnHome(e)} className="navbar-brand" style={{outline: 'none', border: 'none', fontWeight: 'bold', paddingLeft: 10, fontStyle: 'italic'}}>DAUNTLESS</button>
         </nav>
         <Switch>
