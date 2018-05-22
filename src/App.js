@@ -13,11 +13,11 @@ import * as Actions from './actions/actions'
 import { Switch, Route, withRouter, Link } from 'react-router-dom'
 
 class App extends Component {
-  componentDidMount(){
-    this.props.Actions.getAuthors()
-    this.props.Actions.getPosts()
-    this.props.Actions.getComments()
-  }
+   componentDidMount(){
+     this.props.Actions.getPosts();
+     this.props.Actions.getAuthors();
+     this.props.Actions.getComments();
+   }
 
   returnHome(e){
     e.preventDefault()
@@ -26,8 +26,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-          <button onClick={(e) => this.returnHome(e)} class="btn btn-primary">DAUNTLESS</button>
+        <nav className="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+
+          <button onClick={(e) => this.returnHome(e)} className="navbar-brand" style={{outline: 'none', border: 'none', fontWeight: 'bold', paddingLeft: 10, fontStyle: 'italic'}}>DAUNTLESS</button>
         </nav>
         <Switch>
           <Route exact path="/" component={Home}/>
@@ -39,14 +40,10 @@ class App extends Component {
     );
   }
 }
-function mapStateToProps (state) {
-  return {
 
-  }
-}
 function mapDispatchToProps(dispatch) {
 return {
     Actions: bindActionCreators(Actions, dispatch)
   }
 }
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(connect(null, mapDispatchToProps)(App))
