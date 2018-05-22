@@ -14,6 +14,12 @@ const addComment = (comment) => {
   }
 }
 
+const getAuthors = () => {
+  return {
+    type: 'FETCH_AUTHORS',
+    payload: axios(`https://jsonplaceholder.typicode.com/users`)
+  }
+}
 
 const getPosts = () => {
   return {
@@ -22,12 +28,6 @@ const getPosts = () => {
   }
 }
 
-const getAuthors = () => {
-  return {
-    type: 'FETCH_AUTHORS',
-    paylod: axios(`https://jsonplaceholder.typicode.com/users`)
-  }
-}
 
 const addPost = (post) => {
   return {
