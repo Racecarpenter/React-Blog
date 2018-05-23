@@ -1,47 +1,57 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom'
 import * as Actions from '../actions/actions'
-import BackgroundImg from '../realbackground.jpg';
 
 class Preview extends Component {
-  // Comments = () => this.props.location.comments.map((comment, i) =>
-  //    <li key={i}>{comment.body}</li>
-  // )
+  Comments = () => this.props.location.comments.map((comment, i) =>
+     <li style={{border: '2px solid white', marginTop: '10px',backgroundColor:'lightblue', paddingLeft: '5%', marginRight: '10%'}} key={i}><span style={{fontSize: '16px', color: 'white', width: '25%', height:'25%', backgroundColor: 'lightblue', fontShadow: '1px 1px 1px black'}}>{comment.body}</span></li>
+  )
   render() {
-    let homeStyle = {
-      width: '100%',
-      height: '100%',
-      backgroundImage: `url(${BackgroundImg})`,
-      paddingTop: '70px',
-      position: 'absolute'
-    }
     let postAuthor = this.props.authors.filter(author => author.id === this.props.location.post.postId)
 
 
     console.log('comments', this.props.location.comments)
-    return (<div class="card mb-3">
-      <h3 class="card-header">{this.props.location.post.name}</h3>
-      <div class="card-body">
-        <h5 class="card-title">by {postAuthor[0].name}</h5>
+    return (<div className="card mb-3">
+      <h3 className="card-header">{this.props.location.post.name}</h3>
+      <div className="card-body">
+        <h5 className="card-title">
+          <Link to={{pathname:`/author/${postAuthor[0].id}`, author: {...postAuthor[0]}}}>
+          by {postAuthor[0].name}
+          </Link>
+        </h5>
         <h6>Website:</h6>
-        <a href={'http://www.' + postAuthor[0].website} class="card-subtitle text-muted">
+        <a href={'http://www.' + postAuthor[0].website} className="card-subtitle text-muted">
           {postAuthor[0].website}</a>
       </div>
+      <div style={{display: 'flex', flexDirection: 'row'}}>
+        <div style={{flex: 1}}></div>
       <img style={{
-          height: "200px",
-          width: "200px",
-          display: "block"
-        }} src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image"/>
-      <div class="card-body">
-        <p class="card-text">{this.props.location.post.body}</p>
+          maxHeight: "250px",
+          maxWidth: "250px",
+          resizeMode: 'contain',
+          display: "block",
+          flex: 3
+        }} src={require("../ship.png")} alt=" "/>
+      <div style={{display:'flex', width: '200px', flexDirection: 'column', flex: 2, marginLeft: '20px'}}>
+        <div className="card-text" style={{flex: 1, fontSize: '24px'}}>
+          <blockquote className="blockquote">
+            <p className="mb-0">{this.props.location.post.body}</p>
+          </blockquote>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        {/* {this.Comments()} */}
+      <div style={{flex: 1}}></div>
+    </div>
+    <div className="form-group" style={{display: 'flex', flexDirection: 'row'}}>
+      <input className="form-control form-control-lg" type="text" placeholder="Comment Here" style={{flex: 7, marginLeft: '10%', width: '50%'}} id="inputLarge"/>
+      <button type="button" style={{flex: 1, marginTop:'10px', paddingBottom:'5px',marginLeft: '5%'}} className="btn btn-primary">Submit</button>
+    </div>
+      <ul style={{marginTop: '2%', listStyle:'none'}}>
+        <li className="success" style={{fontSize: '20px', fontWeight: 'bold'}}>Comments</li>
+        {this.Comments()}
       </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+      <div className="card-body">
       </div>
     </div>)
   }

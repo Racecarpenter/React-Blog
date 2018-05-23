@@ -31,7 +31,7 @@ class Home extends Component {
     return(
       <div>
         <div style={homeStyle}>
-          <Link to="/post/new" style={{marginLeft: '46%'}}><button>New Post</button></Link>
+          <Link to="/newpost" style={{marginLeft: '46%'}}><button>New Post</button></Link>
           <div style={listStyle}>
           {this.postList()}
           </div>
