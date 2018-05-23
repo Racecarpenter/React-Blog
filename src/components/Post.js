@@ -9,7 +9,6 @@ const Post = (props) => {
     };
     let shortTitle = props.post.name.slice(0,15);
     let shortBody = props.post.body.slice(0,30)
-    componentDidUpdate()
     return (
       <div style={postStyle}>
           <div className="card border-light mb-3">
