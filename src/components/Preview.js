@@ -5,10 +5,28 @@ import {Link} from 'react-router-dom'
 import * as Actions from '../actions/actions'
 
 class Preview extends Component {
+  constructor(){
+  super()
+    this.state = {
+      body: ''
+    }
+}
   Comments = () => this.props.location.comments.map((comment, i) =>
-     <li style={{border: '2px solid white', marginTop: '10px',backgroundColor:'lightblue', paddingLeft: '5%', marginRight: '10%'}} key={i}><span style={{fontSize: '16px', color: 'white', width: '25%', height:'25%', backgroundColor: 'lightblue', fontShadow: '1px 1px 1px black'}}>{comment.body}</span></li>
+     <li style={{border: '2px solid white', marginTop: '10px',backgroundColor:'lightblue', paddingLeft: '5%', marginRight: '10%'}} key={i}><span style={{fontSize: '16px', color: 'white', width: '25%', height:'25%', backgroundColor: 'lightblue'}}>{comment.body}</span></li>
   )
+  updateComment({target: { value }}, field){
+    field === 'body' ? this.setState({body: value}) : null
+  }
+  submit(e){
+    e.preventDefault()
+
+    let { body } = this.state
+    this.setState({body: ''})
+    this.props.Actions.addComment({name: '', body: body, postId: this.props.location.post.postId, email:'Anonymous'})
+
+  }
   render() {
+    let { body } = this.state
     let postAuthor = this.props.authors.filter(author => author.id === this.props.location.post.postId)
 
 
@@ -21,9 +39,6 @@ class Preview extends Component {
           by {postAuthor[0].name}
           </Link>
         </h5>
-        <h6>Website:</h6>
-        <a href={'http://www.' + postAuthor[0].website} className="card-subtitle text-muted">
-          {postAuthor[0].website}</a>
       </div>
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{flex: 1}}></div>
@@ -43,16 +58,29 @@ class Preview extends Component {
       </div>
       <div style={{flex: 1}}></div>
     </div>
-    <div className="form-group" style={{display: 'flex', flexDirection: 'row'}}>
-      <input className="form-control form-control-lg" type="text" placeholder="Comment Here" style={{flex: 7, marginLeft: '10%', width: '50%'}} id="inputLarge"/>
-      <button type="button" style={{flex: 1, marginTop:'10px', paddingBottom:'5px',marginLeft: '5%'}} className="btn btn-primary">Submit</button>
+    <div className="form-group"
+        style={{display: 'flex', flexDirection: 'row'}}>
+      <input
+        className="form-control form-control-lg"
+        type="text"
+        placeholder="Comment Here"
+        style={{flex: 7, marginLeft: '10%', width: '50%'}}
+        value={body}
+        onChange={(e) => this.updateComment(e, 'body')}/>
+      <button
+        type="button"
+        style={{flex: 1, marginTop:'10px', paddingBottom:'5px',marginLeft: '5%'}} onClick={(e) => this.submit(e)}
+        className="btn btn-primary">Submit</button>
     </div>
-      <ul style={{marginTop: '2%', listStyle:'none'}}>
-        <li className="success" style={{fontSize: '20px', fontWeight: 'bold'}}>Comments</li>
+      <ul
+        style={{marginTop: '2%', listStyle:'none'}}>
+        <li
+          className="success"
+          style={{fontSize: '20px', fontWeight: 'bold'}}>
+          Comments
+        </li>
         {this.Comments()}
       </ul>
-      <div className="card-body">
-      </div>
     </div>)
   }
 }
