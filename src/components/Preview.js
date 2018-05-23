@@ -11,8 +11,9 @@ class Preview extends Component {
       body: ''
     }
 }
-  Comments = () => this.props.location.comments.map((comment, i) =>
-     <li style={{border: '2px solid white', marginTop: '10px',backgroundColor:'lightblue', paddingLeft: '5%', marginRight: '10%'}} key={i}><span style={{fontSize: '16px', color: 'white', width: '25%', height:'25%', backgroundColor: 'lightblue'}}>{comment.body}</span></li>
+  postComments = () => this.props.comments.filter(comment => comment.postId == this.props.match.params.id);
+  CommentList = () => this.postComments().map((comment, i) =>
+    <li style={{border: '2px solid white', marginTop: '10px',backgroundColor:'lightblue', paddingLeft: '5%', marginRight: '10%'}} key={i}><span style={{fontSize: '16px', color: 'white', width: '25%', height:'25%', backgroundColor: 'lightblue'}}>{comment.body}</span></li>
   )
   updateComment({target: { value }}, field){
     field === 'body' ? this.setState({body: value}) : null
@@ -23,14 +24,13 @@ class Preview extends Component {
     let { body } = this.state
     this.setState({body: ''})
     this.props.Actions.addComment({name: '', body: body, postId: this.props.location.post.postId, email:'Anonymous'})
-
   }
   render() {
     let { body } = this.state
     let postAuthor = this.props.authors.filter(author => author.id === this.props.location.post.postId)
 
 
-    console.log('comments', this.props.location.comments)
+    console.log('comments', this.props)
     return (<div className="card mb-3">
       <h3 className="card-header">{this.props.location.post.name}</h3>
       <div className="card-body">
@@ -79,13 +79,16 @@ class Preview extends Component {
           style={{fontSize: '20px', fontWeight: 'bold'}}>
           Comments
         </li>
-        {this.Comments()}
+        {this.CommentList()}
       </ul>
     </div>)
   }
 }
 function mapStateToProps(state) {
-  return {authors: state.Authors}
+  return {
+    authors: state.Authors,
+    comments: state.Comments
+  }
 }
 function mapDispatchToProps(dispatch) {
   return {
