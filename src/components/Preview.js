@@ -32,7 +32,6 @@ class Preview extends Component {
     let postPreview = this.props.posts.filter(post => post.id == this.props.match.params.id)[0]
     let postAuthor = this.props.authors.filter(author => author.id === postPreview.userId)[0]
 
-    console.log('preview props', postAuthor)
     return (<div className="card mb-3">
       <h3 className="card-header">{postPreview ? postPreview.title : 'loading'}</h3>
       <div className="card-body">
