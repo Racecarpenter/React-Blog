@@ -10,23 +10,23 @@ class NewPost extends Component {
 
     this.newPost = this.newPost.bind(this)
     this.state = {
-      title: '',
+      name: '',
       body: ''
     }
   }
 
   newPost(){
-    let { title, body } = this.state
+    let { name, body } = this.state
 
-    this.props.Actions.addPost({userId: 1, title, body})
+    this.props.Actions.addPost({postId: 1, name, body, email: ''})
   }
 
   update({target: { value }}, field){
     field === 'body' ? this.setState({body: value}) :
-    this.setState({title: value})
+    this.setState({name: value})
   }
   render() {
-    let { title, body } = this.state
+    let { name, body } = this.state
     return (<div>
       <div className="card bg-light mb-3" style={{
           marginLeft: '25%',
@@ -38,15 +38,15 @@ class NewPost extends Component {
             <fieldset>
               <div className="form-group">
                 <label>Title</label>
-                <input type="text" value={title} className="form-control" placeholder="title"
-                onChange={(e) => this.update(e, 'title')}/>
+                <input type="text" value={name} className="form-control" placeholder="title"
+                onChange={(e) => this.update(e, 'name')}/>
               </div>
               <div className="form-group">
                 <label>Body</label>
                 <input type="text" value={body} className="form-control" placeholder="body"
                 onChange={(e) => this.update(e, 'body')}/>
               </div>
-              <button type="button" onClick={this.newPost} className="btn btn-primary btn-sm">Submit</button>
+              <Link to="/"><button type="button" onClick={this.newPost} className="btn btn-primary btn-sm">Submit</button></Link>
             </fieldset>
           </form>
         </div>
