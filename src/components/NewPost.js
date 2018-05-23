@@ -26,9 +26,11 @@ class NewPost extends Component {
     field === 'body' ? this.setState({body: value}) :
     this.setState({title: value})
   }
+
   render() {
     let { title, body } = this.state
-    return (<div>
+    return (
+      <div>
       <div className="card bg-light mb-3" style={{
           marginLeft: '30%',
           maxWidth: '40%'

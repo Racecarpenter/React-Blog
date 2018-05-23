@@ -10,6 +10,6 @@ const StoreInstance = Store()
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={StoreInstance}>
-      <App />
+        <App />
     </Provider>
   </BrowserRouter>, document.getElementById('root'));
