@@ -25,6 +25,7 @@ class Preview extends Component {
     this.setState({body: ''})
     this.props.Actions.addComment({name: '', body: body, postId: this.props.location.post.postId, email:'Anonymous'})
   }
+
   render() {
     let { body } = this.state
     let postAuthor = this.props.authors.filter(author => author.id === this.props.location.post.postId)
@@ -35,9 +36,9 @@ class Preview extends Component {
       <h3 className="card-header">{this.props.location.post.name}</h3>
       <div className="card-body">
         <h5 className="card-title">
-          <Link to={{pathname:`/author/${postAuthor[0].id}`, author: {...postAuthor[0]}}}>
+          {this.props.location.post.email ? <Link to={{pathname:`/author/${postAuthor[0].id}`, author: {...postAuthor[0]}}}>
           by {postAuthor[0].name}
-          </Link>
+        </Link> : <p>No Author Available</p>}
         </h5>
       </div>
       <div style={{display: 'flex', flexDirection: 'row'}}>
