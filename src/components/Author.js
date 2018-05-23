@@ -20,6 +20,7 @@ const Author = (props) =>{
   console.log('author props', author)
     return (
       <div>
+    { author ?
       <div className="card bg-light mb-3"
            style={{
              marginLeft: '30%',
@@ -36,7 +37,9 @@ const Author = (props) =>{
     <p className="card-text">Company bs: {author.company.bs}</p>
       </div>
     </div>
+    : 'loading'}
     <Link to="/"><button type="button" style={{marginLeft: '47%', marginBottom: '10px'}} className="btn btn-outline-secondary btn-sm">Home</button></Link>
+{ author ?
     <div
       style={{
         width: '50%',
@@ -48,6 +51,7 @@ const Author = (props) =>{
           mapElement={<div style={{ height: `100%` }} />}
         />
     </div>
+    : 'loading'}
   </div>
     )
 }
