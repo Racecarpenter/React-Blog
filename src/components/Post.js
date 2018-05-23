@@ -1,8 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../actions/actions';
+
 
 const Post = (props) => {
     let postStyle = {
@@ -14,8 +12,8 @@ const Post = (props) => {
     return (
       <div style={postStyle}>
           <div className="card border-light mb-3">
-              <img style={{height: 50, width: 50, resizeMode: 'contain'}} src={require('../person-icon.png')}/>
-            <Link to={{pathname:`/post/${props.post.id}`, post: {...props.post}, comments: {...props.comments}}}>
+              <img alt=" " style={{height: 50, width: 50, resizeMode: 'contain'}} src={require('../person-icon.png')}/>
+            <Link to={{pathname:`/post/${props.post.id}`, post: {...props.post}, comments: [...props.comments]}}>
             (Click to Preview)
             </Link>
               <div className="card-body">
