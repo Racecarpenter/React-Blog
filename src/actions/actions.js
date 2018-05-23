@@ -24,7 +24,7 @@ const getAuthors = () => {
 const getPosts = () => {
   return {
     type: 'FETCH_POSTS',
-    payload: axios(`https://jsonplaceholder.typicode.com/comments`)
+    payload: axios(`https://jsonplaceholder.typicode.com/posts`)
   }
 }
 

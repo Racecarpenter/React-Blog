@@ -5,6 +5,7 @@ import BackgroundImg from '../realbackground.jpg';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/actions'
+import './CSS/home.css'
 
 class Home extends Component {
 
@@ -15,27 +16,14 @@ class Home extends Component {
   )
 
   render() {
-    let homeStyle = {
-      width: '100%',
-      height: '100%',
-      backgroundImage: `url(${BackgroundImg})`,
-      paddingTop: '70px',
-      position: 'absolute'
-    }
-    let listStyle = {
-      height: '65%',
-      overflowY: 'auto',
-      marginTop: '10px'
-    }
-
     return(
       <div>
-        <div style={homeStyle}>
-          <Link to="/newpost" style={{marginLeft: '46%'}}><button>New Post</button></Link>
-          <div style={listStyle}>
+        <div className="homeStyle">
+          <Link to="/newpost" style={{marginLeft: '45%'}}><button>New Post</button></Link>
+          <div className="listStyle">
           {this.postList()}
           </div>
-          <div style={{color: 'white', marginLeft: '45%'}}>-Scroll for More-</div>
+          <div className="left" style={{marginLeft: '45%', color: 'white'}}>-SCROLL-</div>
         </div>
       </div>
     )

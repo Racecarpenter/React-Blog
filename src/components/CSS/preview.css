@@ -1,0 +1,58 @@
+.commentLi {
+  border: 2px solid white;
+  margin-top: 10px;
+  background-color:lightblue;
+  padding-left: 5%;
+  margin-right: 10%;
+}
+
+.commentBody {
+  font-size: 16px;
+  color: white;
+  width: 25%;
+  height: 25%;
+  background-color: lightblue;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row
+}
+
+.lrgImg {
+  max-height: 250px;
+  max-width: 250px;
+  resize: contain;
+  display: block;
+  flex: 3;
+}
+
+.body {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  flex: 2;
+  margin-left: 20px;
+}
+
+.commentInput {
+  flex: 7;
+  margin-left: 10%;
+  width: 50%;
+}
+.submitButton {
+  flex: 1;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  margin-left: 1%;
+  margin-right: 5%;
+}
+
+.commentListStyle {
+  margin-top: 2%;
+  list-style: none;
+}
+.commentsTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
