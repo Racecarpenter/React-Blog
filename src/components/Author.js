@@ -16,9 +16,8 @@ const MapWithAMarker = withGoogleMap(({lat, lng}) =>
   </GoogleMap>
 )
 const Author = (props) =>{
-  let author = props.authors.filter(author => author.id == props.match.params.id)
-  let Author = author[0]
-  console.log('author props', props)
+  let author = props.authors.filter(author => author.id == props.match.params.id)[0]
+  console.log('author props', author)
     return (
       <div>
       <div className="card bg-light mb-3"
@@ -27,14 +26,14 @@ const Author = (props) =>{
              maxWidth: "40%"}}>
       <div className="card-header">About the Author:</div>
       <div className="card-body">
-      <p className="card-text">Name: {Author.name}</p>
-      <p className="card-text">Username: {Author.username}</p>
-      <div className="card-text">Website: <a href={'http://www.' + Author.website}>{Author.website}</a></div>
-      <p className="card-text">Email: {Author.email}</p>
-      <p className="card-text">Phone: {Author.phone}</p>
-      <p className="card-text">Company: {Author.company.name}</p>
-      <p className="card-text">Company Catchphrase: {Author.company.catchPhrase}</p>
-    <p className="card-text">Company bs: {Author.company.bs}</p>
+      <p className="card-text">Name: {author.name}</p>
+      <p className="card-text">Username: {author.username}</p>
+      <div className="card-text">Website: <a href={'http://www.' + author.website}>{author.website}</a></div>
+      <p className="card-text">Email: {author.email}</p>
+      <p className="card-text">Phone: {author.phone}</p>
+      <p className="card-text">Company: {author.company.name}</p>
+      <p className="card-text">Company Catchphrase: {author.company.catchPhrase}</p>
+    <p className="card-text">Company bs: {author.company.bs}</p>
       </div>
     </div>
     <Link to="/"><button type="button" style={{marginLeft: '47%', marginBottom: '10px'}} className="btn btn-outline-secondary btn-sm">Home</button></Link>
@@ -43,8 +42,8 @@ const Author = (props) =>{
         width: '50%',
         marginLeft: '25%'}}>
     <MapWithAMarker
-          lat={Author.address.geo.lat}
-          lng={Author.address.geo.lng}
+          lat={author.address.geo.lat}
+          lng={author.address.geo.lng}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />

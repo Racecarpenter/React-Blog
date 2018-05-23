@@ -29,21 +29,22 @@ class Preview extends Component {
 
   render() {
     let {body} = this.state
-    let postAuthor = this.props.authors.filter(author => author.id === this.props.location.post.userId)
+    let postPreview = this.props.posts.filter(post => post.id == this.props.match.params.id)
+    let postAuthor = this.props.authors.filter(author => author.id === postPreview.userId)
 
-    console.log('comments', postAuthor)
+    console.log('preview props', postPreview)
     return (<div className="card mb-3">
-      <h3 className="card-header">{this.props.location.post.title}</h3>
+      <h3 className="card-header">{postPreview.title}</h3>
       <div className="card-body">
         <h5 className="card-title">
           {
-            this.props.location.post.userId === 0 ?
+            postPreview.userId === 0 ?
               <p>Anonymous</p> :
               <Link to={{
-                    pathname: `/author/${postAuthor[0].id}`,
+                    pathname: `/author/${postAuthor.id}`,
                     author: {...postAuthor}
                   }}>
-                  by {postAuthor[0].name}
+                  by {postAuthor.name}
                 </Link>
           }
         </h5>
@@ -56,7 +57,7 @@ class Preview extends Component {
           <div className="body">
             <div className=" card-text" style={{flex: 1, fontSize: '24px'}}>
               <blockquote className="blockquote">
-                <p className="mb-0">{this.props.location.post.body}</p>
+                <p className="mb-0">{postPreview.body}</p>
               </blockquote>
             </div>
           </div>
@@ -82,7 +83,7 @@ class Preview extends Component {
   }
 }
 function mapStateToProps(state) {
-  return {authors: state.Authors, comments: state.Comments}
+  return {authors: state.Authors, comments: state.Comments, posts: state.Posts}
 }
 function mapDispatchToProps(dispatch) {
   return {
