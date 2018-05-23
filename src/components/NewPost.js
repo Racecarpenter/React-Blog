@@ -49,11 +49,12 @@ class NewPost extends Component {
                 <input type="text" value={body} className="form-control" placeholder="body"
                 onChange={(e) => this.update(e, 'body')}/>
               </div>
-              <Link to="/"><button type="button" onClick={this.newPost} className="btn btn-primary btn-sm">Submit</button></Link>
+              <Link to="/"><button style={{marginLeft: '80%'}} type="button" onClick={this.newPost} className="btn btn-primary btn-sm">Submit</button></Link>
             </fieldset>
           </form>
         </div>
       </div>
+      <Link to="/"><button type="button" style={{marginLeft: '47%'}} className="btn btn-outline-secondary btn-sm">Home</button></Link>
     </div>)
   }
 }

@@ -49,7 +49,9 @@ class Preview extends Component {
         </h5>
       </div>
       <div className="flexRow">
-        <div style={{flex: 1}}></div>
+        <div style={{flex: 1}}>
+          <Link to="/"><button type="button" style={{marginLeft: '15%'}} className="btn btn-outline-secondary btn-sm">Home</button></Link>
+        </div>
         <img className="lrgImg" src={require("../ship.png")} alt=" "/>
           <div className="body">
             <div className=" card-text" style={{flex: 1, fontSize: '24px'}}>
