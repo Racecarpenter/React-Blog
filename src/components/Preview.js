@@ -29,24 +29,24 @@ class Preview extends Component {
 
   render() {
     let {body} = this.state
-    let postPreview = this.props.posts.filter(post => post.id == this.props.match.params.id)
-    let postAuthor = this.props.authors.filter(author => author.id === postPreview.userId)
+    let postPreview = this.props.posts.filter(post => post.id == this.props.match.params.id)[0]
+    let postAuthor = this.props.authors.filter(author => author.id === postPreview.userId)[0]
 
-    console.log('preview props', postPreview)
+    console.log('preview props', postAuthor)
     return (<div className="card mb-3">
-      <h3 className="card-header">{postPreview.title}</h3>
+      <h3 className="card-header">{postPreview ? postPreview.title : 'loading'}</h3>
       <div className="card-body">
         <h5 className="card-title">
-          {
+          { postPreview ?
             postPreview.userId === 0 ?
               <p>Anonymous</p> :
               <Link to={{
-                    pathname: `/author/${postAuthor.id}`,
+                    pathname: `/author/${postAuthor ? postAuthor.id : null }`,
                     author: {...postAuthor}
                   }}>
-                  by {postAuthor.name}
+                  by { postAuthor ? postAuthor.name : 'loading'}
                 </Link>
-          }
+        : 'loading'  }
         </h5>
       </div>
       <div className="flexRow">
@@ -57,7 +57,7 @@ class Preview extends Component {
           <div className="body">
             <div className=" card-text" style={{flex: 1, fontSize: '24px'}}>
               <blockquote className="blockquote">
-                <p className="mb-0">{postPreview.body}</p>
+                <p className="mb-0">{postPreview ? postPreview.body : 'loading'}</p>
               </blockquote>
             </div>
           </div>
