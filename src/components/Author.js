@@ -1,5 +1,6 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import {Link} from 'react-router-dom'
 
 const MapWithAMarker = withGoogleMap(({lat, lng}) =>
   <GoogleMap
@@ -32,6 +33,7 @@ const Author = (props) =>{
     <p className="card-text">Company bs: {author.company.bs}</p>
       </div>
     </div>
+    <Link to="/"><button type="button" style={{marginLeft: '47%', marginBottom: '10px'}} className="btn btn-outline-secondary btn-sm">Home</button></Link>
     <div
       style={{
         width: '50%',

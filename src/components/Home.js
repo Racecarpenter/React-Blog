@@ -19,7 +19,7 @@ class Home extends Component {
     return(
       <div>
         <div className="homeStyle">
-          <Link to="/newpost" style={{marginLeft: '45%'}}><button>New Post</button></Link>
+          <Link to="/newpost" style={{marginLeft: '45%'}}><button className="btn btn-outline-secondary">New Post</button></Link>
           <div className="listStyle">
           {this.postList()}
           </div>
